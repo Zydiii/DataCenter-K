@@ -27,8 +27,8 @@ spec:
     spec:
       containers:
         - name: spring-mongo-service
-          image: zydiii/spring-mongo-service:1.6
-          imagePullPolicy: Never
+          image: zydiii/spring-mongo-service:2.4.8
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
@@ -52,3 +52,8 @@ spec:
                 configMapKeyRef:
                   name: mongodb-configmap
                   key: database_url
+            - name: MONGO_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-configmap
+                  key: database_port
